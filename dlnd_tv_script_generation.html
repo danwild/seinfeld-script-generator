@@ -13682,7 +13682,7 @@ out = output[:, -1]</code></pre>
         <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">n_layers</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         
         <span class="c1"># dropout layer</span>
-<span class="c1">#         self.dropout = nn.Dropout(0.3)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
         
         <span class="c1"># linear and sigmoid layers</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
@@ -13700,7 +13700,6 @@ out = output[:, -1]</code></pre>
         <span class="n">batch_size</span> <span class="o">=</span> <span class="n">nn_input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
         <span class="c1"># embeddings and lstm_out</span>
-<span class="c1">#         nn_input = nn_input.long()</span>
         <span class="n">embeds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">nn_input</span><span class="p">)</span>
         <span class="n">lstm_out</span><span class="p">,</span> <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">embeds</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
     
@@ -13708,35 +13707,14 @@ out = output[:, -1]</code></pre>
         <span class="n">lstm_out</span> <span class="o">=</span> <span class="n">lstm_out</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span>
         
         <span class="c1"># dropout and fully-connected layer</span>
-<span class="c1">#         out = self.dropout(lstm_out)</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">lstm_out</span><span class="p">)</span>
-        <span class="c1"># sigmoid function</span>
-        <span class="n">sig_out</span> <span class="o">=</span> <span class="n">out</span> <span class="c1">#self.sig(out)</span>
         
         <span class="c1"># reshape to be batch_size first</span>
-        <span class="n">sig_out</span> <span class="o">=</span> <span class="n">sig_out</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">)</span>
-        <span class="n">sig_out</span> <span class="o">=</span> <span class="n">sig_out</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># get last batch of labels</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># get last batch of labels</span>
         
         <span class="c1"># return one batch of output word scores and the hidden state</span>
-        <span class="k">return</span> <span class="n">sig_out</span><span class="p">,</span> <span class="n">hidden</span>
-
-<span class="c1">#         batch_size = nn_input.size(0)</span>
-
-<span class="c1">#         # embeddings and lstm_out</span>
-<span class="c1">#         embeds = self.embedding(nn_input)</span>
-<span class="c1">#         lstm_out, hidden = self.lstm(embeds, hidden)</span>
-<span class="c1">#         # stack up lstm outputs</span>
-<span class="c1">#         lstm_out = lstm_out.contiguous().view(-1, self.hidden_dim)</span>
-        
-<span class="c1">#         # dropout and fully-connected layer</span>
-<span class="c1">#         output = self.fc(lstm_out)</span>
-        
-<span class="c1">#         # reshape to be batch_size first</span>
-<span class="c1">#         output = output.view(batch_size, -1, self.output_size)</span>
-<span class="c1">#         out = output[:, -1] # get last batch of labels       </span>
-<span class="c1">#         # return one batch of output word scores and the hidden state</span>
-<span class="c1">#         return out, hidden</span>
-    
+        <span class="k">return</span> <span class="n">out</span><span class="p">,</span> <span class="n">hidden</span>    
     
     <span class="k">def</span> <span class="nf">init_hidden</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
