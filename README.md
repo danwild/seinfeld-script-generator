@@ -2,6 +2,7 @@
 Use RNN to generate new Seinfeld scripts
 
 ![](https://media.giphy.com/media/rwPeS2T20mN1K/giphy.gif)
+
 Image credit: [giphy](https://giphy.com/)
 
 ### Example generated script
