@@ -1,7 +1,7 @@
 # seinfeld-script-generator
 Use RNN to generate new Seinfeld scripts
 
-![](https://media.giphy.com/media/KdDIGOxbQBAqI/giphy.gif)
+![](https://media.giphy.com/media/rwPeS2T20mN1K/giphy.gif)
 
 ### Example generated script
 
