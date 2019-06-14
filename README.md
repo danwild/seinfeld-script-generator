@@ -5,23 +5,27 @@ Use RNN to generate new Seinfeld scripts
 
 ### Example generated script
 
->jerry: what about me?
+>kramer: zapata!
 >
->jerry: i don't have to wait.
+>elaine: oh!
 >
->kramer:(to the sales table)
+>kramer: yeah!(to elaine and george) what are you doing here?
 >
->elaine:(to jerry) hey, look at this, i'm a good doctor.
+>elaine: i can't believe this, it's a very exciting situation.
 >
->newman:(to elaine) you think i have no idea of this...
+>jerry:(to elaine) hey, hey, you know what?
 >
->elaine: oh, you better take the phone, and he was a little nervous.
+>kramer: well, i'm gonna go to the bathroom.
 >
->kramer:(to the phone) hey, hey, jerry, i don't want to be a little bit.(to kramer and jerry) you can't.
+>george: what?
 >
->jerry: oh, yeah. i don't even know, i know.
+>george: well, i got a lot for a few hours to the hospital.
 >
->jerry:(to the phone) oh, i know.
+>george:(on the phone) hello, hi, elaine.
 >
->kramer:(laughing) you know...(to jerry) you don't know.
+>kramer: hey.
+>
+>elaine: what is that?
+>
+>jerry: well, it's all about it, you know, you know, it's not a good story. you know, the guy was in a gage.
 
