@@ -1,4 +1,4 @@
-# seinfeld-script-generator
+# seinfeld-script-generator [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/danwild/seinfeld-script-generator/master)
 Use RNN to generate new Seinfeld scripts
 
 ![](https://media.giphy.com/media/rwPeS2T20mN1K/giphy.gif)
